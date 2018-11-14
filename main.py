@@ -54,6 +54,7 @@ def fire():
       firework.set_pixel(3, 0, randomColor)
       firework.set_pixel(7, 0, randomColor)
       firework.set_pixel(6, 6, randomColor)
+      firework.set_pixel(7, 7, randomColor)
       time.sleep(0.2)
       firework.clear()
 

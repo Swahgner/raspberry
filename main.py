@@ -9,9 +9,9 @@ sense.low_light = True
 # HAKAN
 
 
-sense.clear()
 i = 0
 def fire():
+  sense.clear()
   while(True):
     green = (0, 255, 0)
     yellow = (255, 255, 0)

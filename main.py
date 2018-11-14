@@ -75,6 +75,8 @@ def win():
   
   for bomb in bombList:
     sense.set_pixel(bomb[0], bomb[1], white)
+    
+  from firework.py import fire
   
   print("YOU WON!!!")
 

@@ -30,7 +30,6 @@ clearSpots = []
 
 
 def init():
-  bombs = 8
   bombsPlaced = 0
   count = 0
   
@@ -68,6 +67,13 @@ def dead():
   
   for bomb in bombList:
     sense.set_pixel(bomb[0], bomb[1], blue)
+    
+def win():
+  for y in range(8):
+    for x in range(8):
+      sense.set_pixel(x,y, blue)
+  
+  print("YOU WON!!!")
 
 
 
@@ -165,7 +171,7 @@ def run(px, py):
           if (bombSpot == False):
             for spot in clearSpots:
               if (spot[0] == px and spot[1] == py):
-                spot = [px,py,1,0]
+                spot[2] = 1
                   
                 oldColor = checkAdj(px,py)
                 
@@ -193,7 +199,16 @@ def run(px, py):
         
         sense.set_pixel(px, py, yellow)
         
+        totalSpots = len(clearSpots)
         
+        for spot in clearSpots:
+          if (spot[3] == 1): # If it's a bomb
+            totalSpots = totalSpots - 1
+          elif (spot[2] == 1): #If it's cleared
+            totalSpots = totalSpots - 1
+          
+        if (totalSpots == 0):
+          win()
         
 
 

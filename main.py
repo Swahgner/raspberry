@@ -5,6 +5,52 @@ import time
 sense = SenseHat()
 sense.low_light = True
 
+
+# HAKAN
+
+
+sense.clear()
+i = 0
+def fire():
+  while(True):
+    green = (0, 255, 0)
+    yellow = (255, 255, 0)
+    blue = (0, 0, 255)
+    red = (255, 0, 0)
+    white = (255,255,255)
+    nothing = (0,0,0)
+    pink = (255,105, 180)
+    black = (20, 20, 20)
+
+    if(i<1):
+      sense.set_pixel(3, 7, white)
+      time.sleep(0.5)
+      sense.set_pixel(3, 6, white)
+      time.sleep(0.5)
+      sense.set_pixel(3, 5, white)
+      time.sleep(0.5)
+      sense.set_pixel(3, 4, white)
+      time.sleep(0.5)
+      sense.set_pixel(2, 3, blue)
+      sense.set_pixel(4, 3, blue)
+      sense.set_pixel(3, 3, blue)
+      time.sleep(0.5)
+      sense.set_pixel(3, 2, blue)
+      sense.set_pixel(5, 2, blue)
+      sense.set_pixel(1, 2, blue)
+      time.sleep(0.5)
+      sense.set_pixel(3, 1, red)
+      sense.set_pixel(6, 1, red)
+      sense.set_pixel(0, 1, red)
+      time.sleep(0.5)
+      sense.set_pixel(3, 0, red)
+      sense.set_pixel(7, 0, red)
+      sense.clear()
+
+
+# -----
+
+
 green = (0, 255, 0)
 yellow = (255, 255, 0)
 blue = (0, 0, 255)

@@ -73,6 +73,9 @@ def win():
     for x in range(8):
       sense.set_pixel(x,y, blue)
   
+  for bomb in bombList:
+    sense.set_pixel(bomb[0], bomb[1], white)
+  
   print("YOU WON!!!")
 
 

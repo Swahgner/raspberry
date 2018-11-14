@@ -23,7 +23,7 @@ sense.clear()
 p_x = 4
 p_y = 4
 
-p_col = red
+p_col = yellow
 
 bombList = []
 clearSpots = []
@@ -108,11 +108,13 @@ def checkAdj(x, y):
     
     
   if (adjBomb == 1):
-    return [0,255,255]
+    return [0,255,0] # Green
   elif (adjBomb == 2):
-    return [255,255,0]
+    return [0,0,255] # Blue
   elif (adjBomb == 3):
-    return [255,0,255]
+    return [255,0,0] # Red
+  elif (adjBomb == 4):
+    return [255,105,180] # Pink
   else:
     return [255,255,255]
     
@@ -198,4 +200,3 @@ def run(px, py):
 
 
 run(p_x, p_y)
-

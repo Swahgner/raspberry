@@ -191,7 +191,7 @@ def run(px, py):
           
         oldColor = sense.get_pixel(px,py)
         
-        sense.set_pixel(px, py, red)
+        sense.set_pixel(px, py, yellow)
         
         
         

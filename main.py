@@ -97,7 +97,7 @@ def run(px, py):
             for spot in clearSpots:
               if (spot[0] == px and spot[1] == py):
                 spot = [px,py,1]
-                sense.set_pixel(px,py,blue)
+                oldColor = [0,255,0]
                 print("CLEAR!")
           
           

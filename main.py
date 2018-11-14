@@ -39,13 +39,23 @@ def init():
       #sense.set_pixel(x, y, white)
       
       if (randint(0,64) < 8):
-        sense.set_pixel(x, y, blue)
         curbomb = [x,y]
         bombList.append(curbomb)
+        clearSpots.append([x,y,0,1])
       else:
-        clearSpots.append([x,y,0])
-      
+        clearSpots.append([x,y,0,0])
+        
+        
+  for y in range(8):
+    for x in range(8):
+      sense.set_pixel(x,y,white)
       time.sleep(0.02)
+  
+  for x in range(8):
+    for y in range(8):
+      sense.set_pixel(x,y,nothing)
+      time.sleep(0.01)
+  
       
   sense.set_pixel(p_x, p_y, p_col)
 
@@ -60,6 +70,56 @@ def dead():
 
 
 init()
+
+def checkAdj(x, y):
+  # Check if all adjacent spots are bombs or not
+  # If has adjacant bomb, do not go to next
+  
+  adjBomb = 0
+  
+  for bomb in bombList:
+    
+    if (bomb[0] == (x - 1) and bomb[1] == (y - 1)):
+      adjBomb = adjBomb + 1
+    
+    if (bomb[0] == (x) and bomb[1] == (y - 1)):
+      adjBomb = adjBomb + 1
+    
+    if (bomb[0] == (x + 1) and bomb[1] == (y - 1)):
+      adjBomb = adjBomb + 1
+    
+    if (bomb[0] == (x - 1) and bomb[1] == (y)):
+      adjBomb = adjBomb + 1
+    
+    if (bomb[0] == (x + 1) and bomb[1] == (y)):
+      adjBomb = adjBomb + 1
+    
+    if (bomb[0] == (x - 1) and bomb[1] == (y + 1)):
+      adjBomb = adjBomb + 1
+    
+    if (bomb[0] == (x) and bomb[1] == (y + 1)):
+      adjBomb = adjBomb + 1
+    
+    if (bomb[0] == (x + 1) and bomb[1] == (y + 1)):
+      adjBomb = adjBomb + 1
+    
+    
+  if (adjBomb == 1):
+    return [0,255,255]
+  elif (adjBomb == 2):
+    return [255,255,0]
+  elif (adjBomb == 3):
+    return [255,0,255]
+  else:
+    return [255,255,255]
+    
+    
+  # Bombs next to:
+  # 0 = 255,255,255
+  # 1 = 0,255,255
+  # 2 = 255,255,0
+  # 3 = 255,0,255
+  
 
 
 def run(px, py):
@@ -92,13 +152,21 @@ def run(px, py):
               dead()
               break
               bombSpot = True
+              
+              
+              
+              print("BOOOOM!")
           
           if (bombSpot == False):
             for spot in clearSpots:
               if (spot[0] == px and spot[1] == py):
-                spot = [px,py,1]
-                oldColor = [0,255,0]
+                spot = [px,py,1,0]
+                  
+                oldColor = checkAdj(px,py)
+                
+                
                 print("CLEAR!")
+              
           
           
         if (px < 0):

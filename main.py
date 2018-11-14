@@ -65,6 +65,9 @@ def dead():
   for y in range(8):
     for x in range(8):
       sense.set_pixel(x, y, red)
+  
+  for bomb in bombList:
+    sense.set_pixel(bomb[0], bomb[1], green)
 
 
 
@@ -150,8 +153,8 @@ def run(px, py):
           for bomb in bombList:
             if (bomb[0] == px and bomb[1] == py):
               dead()
-              break
               bombSpot = True
+              break
               
               
               

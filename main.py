@@ -67,7 +67,7 @@ def dead():
       sense.set_pixel(x, y, red)
   
   for bomb in bombList:
-    sense.set_pixel(bomb[0], bomb[1], green)
+    sense.set_pixel(bomb[0], bomb[1], blue)
 
 
 

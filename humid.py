@@ -47,7 +47,7 @@ def set(col):
   humidity = sense.get_humidity()
   pressure = sense.get_pressure()
 
-  temp = (temp1+temp2)/2
+  temp = int((temp1+temp2)/2)
   temp_corr = temp - ((temp_cpu-temp)/1.5)
   temp_corr = get_smooth(temp_corr)
   
@@ -59,13 +59,6 @@ def set(col):
 
 while True:
   
-  print("")
-  print("Humidity: ", sense.get_humidity())
-  print("Temperature: ", sense.get_temperature())
-  print("")
-  print("------")
-  
-  
   temp1 = sense.get_temperature_from_humidity()
   temp2 = sense.get_temperature_from_pressure()
   temp_cpu = get_cpu_temperature()
@@ -76,6 +69,12 @@ while True:
   temp = (temp1+temp2)/2
   temp_corr = temp - ((temp_cpu-temp)/1.5)
   temp_corr = get_smooth(temp_corr)
+
+  print("")
+  print("Humidity: ", sense.get_humidity())
+  print("Temperature: ", sense.get_temperature())
+  print("")
+  print("------")
   
   
   if (temp > 30 and temp < 36):

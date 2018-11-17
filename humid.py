@@ -70,9 +70,9 @@ while True:
   print("------")
   
   
-  if (temp_corr > 30 and temp < 36):
+  if (temp_corr > 30 and temp_corr < 36):
     set(orange)
-  elif (temp_corr > 22 and temp <= 30):
+  elif (temp_corr > 22 and temp_corr <= 30):
     set(green)
   elif (temp_corr <= 22):
     set(blue)

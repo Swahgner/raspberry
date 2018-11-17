@@ -3,3 +3,8 @@ from random import randint
 import time
 
 sense = SenseHat()
+
+sense.clear()
+
+
+print("Temp: ", sense.get_temperature())

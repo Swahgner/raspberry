@@ -50,4 +50,4 @@ while True:
   else:
     set(red)
   
-  time.sleep(2)
+  time.sleep(0.5)

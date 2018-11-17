@@ -24,7 +24,16 @@ def set(col):
       sense.set_pixel(x,y,(0,0,0))
       time.sleep(0.01)
   
-  temp = int(sense.get_temperature())
+  temp1 = sense.get_temperature_from_humidity()
+  temp2 = sense.get_temperature_from_pressure()
+  temp_cpu = get_cpu_temperature()
+
+  humidity = sense.get_humidity()
+  pressure = sense.get_pressure()
+
+  temp = (temp1+temp2)/2
+  temp_corr = temp - ((temp_cpu-temp)/1.5)
+  temp_corr = get_smooth(temp_corr)
   
   msg = str(temp)
   
@@ -40,7 +49,18 @@ while True:
   print("")
   print("------")
   
-  temp = sense.get_temperature()
+  
+  temp1 = sense.get_temperature_from_humidity()
+  temp2 = sense.get_temperature_from_pressure()
+  temp_cpu = get_cpu_temperature()
+
+  humidity = sense.get_humidity()
+  pressure = sense.get_pressure()
+
+  temp = (temp1+temp2)/2
+  temp_corr = temp - ((temp_cpu-temp)/1.5)
+  temp_corr = get_smooth(temp_corr)
+  
   
   if (temp > 30 and temp < 36):
     set(orange)

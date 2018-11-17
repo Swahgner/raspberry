@@ -30,7 +30,7 @@ def set(col):
   
   degree = unichr(176)
   
-  msg += '$^\circ$'
+  msg += u"\N{DEGREE SIGN}"
   
   msg += " C"
   
@@ -39,7 +39,6 @@ def set(col):
 while True:
   
   print("")
-  print(u"\N{DEGREE SIGN}")
   print("Humidity: ", sense.get_humidity())
   print("Temperature: ", sense.get_temperature())
   print("")

@@ -27,6 +27,11 @@ def set(col):
   temp = int(sense.get_temperature())
   
   msg = str(temp)
+  
+  degree = unichr(176)
+  
+  msg += degree
+  
   msg += " C"
   
   sense.show_message(msg, text_colour=(255,255,255), back_colour=(0,0,0), scroll_speed=0.08)

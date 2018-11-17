@@ -7,4 +7,4 @@ sense = SenseHat()
 sense.clear()
 
 
-print("Temp: ", sense.get_temperature())
+print("Temp: ", get_temperature_from_humidity())

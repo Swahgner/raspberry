@@ -28,7 +28,7 @@ while True:
   
   print("")
   print("Humidity: ", sense.get_humidity())
-  print("Temperature: ", sense.get_temperature())
+  print("Temperature: ", sense.get_temperature(), text_colour=(255,255,255) back_colour=(0,0,0), scroll_speed=0.05)
   print("")
   print("------")
   

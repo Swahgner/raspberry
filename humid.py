@@ -33,13 +33,6 @@ def set(col):
       sense.set_pixel(x,y,col)
       time.sleep(0.02)
       
-  time.sleep(0.2)
-      
-  for x in range(8):
-    for y in range(8):
-      sense.set_pixel(x,y,(0,0,0))
-      time.sleep(0.01)
-  
   temp1 = sense.get_temperature_from_humidity()
   temp2 = sense.get_temperature_from_pressure()
   temp_cpu = get_cpu_temperature()
@@ -55,7 +48,7 @@ def set(col):
   
   msg += " C"
   
-  sense.show_message(msg, text_colour=(255,255,255), back_colour=(0,0,0), scroll_speed=0.08)
+  sense.show_message(msg, text_colour=(0,0,0), back_colour=col, scroll_speed=0.08)
 
 while True:
   

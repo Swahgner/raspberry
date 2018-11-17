@@ -32,5 +32,7 @@ while True:
     set(green)
   elif (temp <= 22):
     set(blue)
+  else:
+    set(red)
   
   time.sleep(2)

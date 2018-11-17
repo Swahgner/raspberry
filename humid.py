@@ -22,7 +22,8 @@ def set(col):
       sense.set_pixel(x,y,(0,0,0))
       time.sleep(0.02)
   
-  sense.show_message("yes", text_colour=(255,255,255), back_colour=(0,0,0), scroll_speed=0.05)
+  temp = sense.get_temperature()
+  sense.show_message(str(temp), text_colour=(255,255,255), back_colour=(0,0,0), scroll_speed=0.05)
 
 while True:
   

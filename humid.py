@@ -12,6 +12,21 @@ orange = (255,140,0)
 
 sense.clear()
 
+# get CPU temperature
+def get_cpu_temperature():
+    res = os.popen("vcgencmd measure_temp").readline()
+    t = float(res.replace("temp=","").replace("'C\n",""))
+    return t
+
+def get_smooth(x):
+    if not hasattr(get_smooth, "t"):
+        get_smooth.t = [x,x,x]
+    get_smooth.t[2] = get_smooth.t[1]
+    get_smooth.t[1] = get_smooth.t[0]
+    get_smooth.t[0] = x
+    xs = (get_smooth.t[0]+get_smooth.t[1]+get_smooth.t[2])/3
+    return xs
+
 def set(col):
   for x in range(8):
     for y in range(8):

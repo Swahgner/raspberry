@@ -51,7 +51,7 @@ def set(col):
   temp_corr = temp - ((temp_cpu-temp)/1.5)
   temp_corr = get_smooth(temp_corr)
   
-  msg = str(temp)
+  msg = str(round(temp_corr,2))
   
   msg += " C"
   
@@ -72,16 +72,16 @@ while True:
 
   print("")
   print("Humidity: ", sense.get_humidity())
-  print("Temperature: ", sense.get_temperature())
+  print("Temperature: ", temp_corr)
   print("")
   print("------")
   
   
-  if (temp > 30 and temp < 36):
+  if (temp_corr > 30 and temp < 36):
     set(orange)
-  elif (temp > 22 and temp <= 30):
+  elif (temp_corr > 22 and temp <= 30):
     set(green)
-  elif (temp <= 22):
+  elif (temp_corr <= 22):
     set(blue)
   else:
     set(red)

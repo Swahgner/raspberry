@@ -11,7 +11,7 @@ orange = (255,140,0)
 
 sense.clear()
 
-def set(col):
+def set(col, msg):
   for x in range(8):
     for y in range(8):
       sense.set_pixel(x,y,col)
@@ -21,6 +21,8 @@ def set(col):
     for y in range(8):
       sense.set_pixel(x,y,(0,0,0))
       time.sleep(0.02)
+  
+  sense.show_message(sense.get_temperature())
 
 while True:
   

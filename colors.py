@@ -10,8 +10,10 @@ while True:
   y = randint(0,7)
   
   r = randint(0,25)
+  g = randint(0,25)
+  b = randint(0,25)
   
-  color = (r * 10, r * 10, r * 10)
+  color = (r * 10, g * 10, b * 10)
   
   sense.set_pixel(x,y,color)
   time.sleep(0.0005)

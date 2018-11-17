@@ -23,7 +23,10 @@ def set(col):
       time.sleep(0.02)
   
   temp = int(sense.get_temperature())
-  sense.show_message((str(temp),"C"), text_colour=(255,255,255), back_colour=(0,0,0), scroll_speed=0.05)
+  
+  msg = str(temp), "C"
+  
+  sense.show_message(msg, text_colour=(255,255,255), back_colour=(0,0,0), scroll_speed=0.025)
 
 while True:
   

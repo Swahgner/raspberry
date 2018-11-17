@@ -1,38 +1,40 @@
+# temperature calibration from:
+#    yaab-arduino.blogspot.com/2016/08/accurate-temperature-reading-sensehat.html
+
+from sense_hat import SenseHat
 import os
 import time
-from sense_hat import SenseHat
-
-# get CPU temperature
-def get_cpu_temp():
-  res = os.popen("vcgencmd measure_temp").readline()
-  t = float(res.replace("temp=","").replace("'C\n",""))
-  return(t)
-
-# use moving average to smooth readings
-def get_smooth(x):
-  if not hasattr(get_smooth, "t"):
-    get_smooth.t = [x,x,x]
-  get_smooth.t[2] = get_smooth.t[1]
-  get_smooth.t[1] = get_smooth.t[0]
-  get_smooth.t[0] = x
-  xs = (get_smooth.t[0]+get_smooth.t[1]+get_smooth.t[2])/3
-  return(xs)
-
 
 sense = SenseHat()
 
-while True:
-  t1 = sense.get_temperature_from_humidity()
-  t2 = sense.get_temperature_from_pressure()
-  t_cpu = get_cpu_temp()
-  h = sense.get_humidity()
-  p = sense.get_pressure()
+# get CPU temperature
+def get_cpu_temperature():
+    res = os.popen("vcgencmd measure_temp").readline()
+    t = float(res.replace("temp=","").replace("'C\n",""))
+    return t
 
-  # calculates the real temperature compesating CPU heating
-  t = (t1+t2)/2
-  t_corr = t - ((t_cpu-t)/1.5)
-  t_corr = get_smooth(t_corr)
-  
-  print("t1=%.1f  t2=%.1f  t_cpu=%.1f  t_corr=%.1f  h=%d  p=%d" % (t1, t2, t_cpu, t_corr, round(h), round(p)))
-  
-  time.sleep(5)
+def get_smooth(x):
+    if not hasattr(get_smooth, "t"):
+        get_smooth.t = [x,x,x]
+    get_smooth.t[2] = get_smooth.t[1]
+    get_smooth.t[1] = get_smooth.t[0]
+    get_smooth.t[0] = x
+    xs = (get_smooth.t[0]+get_smooth.t[1]+get_smooth.t[2])/3
+    return xs
+
+while True:
+    temp1 = sense.get_temperature_from_humidity()
+    temp2 = sense.get_temperature_from_pressure()
+    temp_cpu = get_cpu_temperature()
+    
+    humidity = sense.get_humidity()
+    pressure = sense.get_pressure()
+
+    temp = (temp1+temp2)/2
+    temp_corr = temp - ((temp_cpu-temp)/1.5)
+    temp_corr = get_smooth(temp_corr)
+    
+    text = "T=" + str(round(temp_corr,2)) + "C h=" + str(round(humidity,2)) + "%"
+    print text
+    print "Temperature raw = " + str(round(sense.get_temperature(),2))
+    sense.show_message(text)

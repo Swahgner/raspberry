@@ -15,6 +15,7 @@ def set(col):
   for x in range(8):
     for y in range(8):
       sense.set_pixel(x,y,col)
+      time.sleep(0.05
 
 while True:
   

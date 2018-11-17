@@ -27,7 +27,7 @@ def set(col):
   msg = str(temp)
   msg += " C"
   
-  sense.show_message(msg, text_colour=(255,255,255), back_colour=(0,0,0), scroll_speed=0.025)
+  sense.show_message(msg, text_colour=(255,255,255), back_colour=(0,0,0), scroll_speed=0.08)
 
 while True:
   

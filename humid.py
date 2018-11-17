@@ -11,7 +11,7 @@ orange = (255,140,0)
 
 sense.clear()
 
-def set(col, msg):
+def set(col):
   for x in range(8):
     for y in range(8):
       sense.set_pixel(x,y,col)

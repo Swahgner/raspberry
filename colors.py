@@ -9,8 +9,9 @@ while True:
   x = randint(0,7)
   y = randint(0,7)
   
-  color = (randint(10,255), randint(10,255), randint(10,255))
+  r = randint(0,25)
+  
+  color = (r * 10, r * 10, r * 10)
   
   sense.set_pixel(x,y,color)
-  time.sleep(0.05)
-  sense.set_pixel(x,y,(0,0,0))
+  time.sleep(0.0005)

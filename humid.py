@@ -27,8 +27,6 @@ def set(col):
   temp = int(sense.get_temperature())
   
   msg = str(temp)
-    
-  msg += u"\N{DEGREE SIGN}"
   
   msg += " C"
   

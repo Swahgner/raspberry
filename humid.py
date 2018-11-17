@@ -7,7 +7,7 @@ sense = SenseHat()
 green = (0,255,0)
 red = (255,0,0)
 blue = (0,0,255)
-orange = (200,50,50)
+orange = (255,140,0)
 
 sense.clear()
 

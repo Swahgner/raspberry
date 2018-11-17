@@ -15,12 +15,14 @@ def set(col):
   for x in range(8):
     for y in range(8):
       sense.set_pixel(x,y,col)
-      time.sleep(0.05)
+      time.sleep(0.02)
+      
+  time.sleep(0.2)
       
   for x in range(8):
     for y in range(8):
       sense.set_pixel(x,y,(0,0,0))
-      time.sleep(0.02)
+      time.sleep(0.01)
   
   temp = int(sense.get_temperature())
   

@@ -30,7 +30,7 @@ def set(col):
   
   degree = unichr(176)
   
-  msg += degree
+  msg += '$^\circ$'
   
   msg += " C"
   

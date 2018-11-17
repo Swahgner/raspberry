@@ -6,9 +6,10 @@ sense = SenseHat()
 
 
 while True:
-  x = randint(0,8)
-  y = randint(0,8)
+  x = randint(0,7)
+  y = randint(0,7)
   
-  color = (randint(50,255), randint(50,255), randint(50,255))
+  color = (randint(10,255), randint(10,255), randint(10,255))
   
   sense.set_pixel(x,y,color)
+  time.sleep(0.05)

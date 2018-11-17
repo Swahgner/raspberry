@@ -13,3 +13,4 @@ while True:
   
   sense.set_pixel(x,y,color)
   time.sleep(0.05)
+  sense.set_pixel)x,y,(0,0,0)

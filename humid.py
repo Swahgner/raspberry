@@ -22,13 +22,13 @@ def set(col):
       sense.set_pixel(x,y,(0,0,0))
       time.sleep(0.02)
   
-  sense.show_message(sense.get_temperature())
+  sense.show_message(sense.get_temperature(), text_colour=(255,255,255) back_colour=(0,0,0), scroll_speed=0.05)
 
 while True:
   
   print("")
   print("Humidity: ", sense.get_humidity())
-  print("Temperature: ", sense.get_temperature(), text_colour=(255,255,255) back_colour=(0,0,0), scroll_speed=0.05)
+  print("Temperature: ", sense.get_temperature())
   print("")
   print("------")
   

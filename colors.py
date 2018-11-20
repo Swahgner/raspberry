@@ -1,19 +1,21 @@
 from sense_hat import SenseHat
-from random import randint
 import time
+from random import randint
 
-sense = SenseHat()
+s = SenseHat()
+
+green = (0, 255, 0)
+yellow = (255, 255, 0)
+blue = (0, 0, 255)
+red = (255, 0, 0)
+white = (255,255,255)
+nothing = (0,0,0)
+pink = (255,105, 180)
+
 
 
 while True:
-  x = randint(0,7)
-  y = randint(0,7)
-  
-  r = randint(0,25)
-  g = randint(0,25)
-  b = randint(0,25)
-  
-  color = (r * 10, g * 10, b * 10)
-  
-  sense.set_pixel(x,y,color)
-  time.sleep(0.0005)
+  for y in range(8):
+    for x in range(8):
+      color = (randint(100,255),randint(100,255),randint(100,255))
+      s.set_pixel(x,y,color)

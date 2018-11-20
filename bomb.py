@@ -35,20 +35,20 @@ def runTime():
   if (timer > 10):
     setColor(yellow)
     timer = timer - 1
-    time.sleep(0.005)
+    time.sleep(0.01)
     setColor(nothing)
-    time.sleep(0.995)
+    time.sleep(0.99)
     runTime()
   elif (timer > 0 and timer <= 10):
     setColor(red)
     timer = timer - 1
-    time.sleep(0.005)
+    time.sleep(0.01)
     setColor(nothing)
-    time.sleep(0.495)
+    time.sleep(0.49)
     setColor(red)
-    time.sleep(0.005)
+    time.sleep(0.01)
     setColor(nothing)
-    time.sleep(0.495)
+    time.sleep(0.49)
     runTime()
   else:
     print("DEAD!")

@@ -95,6 +95,7 @@ while True:
         if (event.direction == "right"):
           boolGameOn = True
           glbGameType = 0 #
+          timer = 45
           print("Starting game of: Standard Timer")
           print("Timer: ", timer)
           startGame()
@@ -105,14 +106,14 @@ while True:
     if (glbGameType == 0):
       # Standard timer game
       
-      if (timer > (timer / 10)):
+      if (timer > 10):
         setColor(yellow)
         timer = timer - 1
         time.sleep(0.02)
         setColor(nothing)
         time.sleep(0.98)
         print(timer, " seconds")
-      elif (timer > 0 and timer <= (timer / 10)):
+      elif (timer > 0):
         setColor(red)
         timer = timer - 1
         time.sleep(0.02)

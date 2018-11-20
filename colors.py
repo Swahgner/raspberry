@@ -19,3 +19,4 @@ while True:
     for x in range(8):
       color = (randint(100,255),randint(100,255),randint(100,255))
       s.set_pixel(x,y,color)
+      time.sleep(0.001)

@@ -13,6 +13,7 @@ white = (255,255,255)
 nothing = (0,0,0)
 pink = (255,105, 180)
 yellow = (255,255,0)
+orange = (255,140,0)
 
 
 def setColor(color):
@@ -23,36 +24,12 @@ def setColor(color):
 
 
 timer = 45
+boolGameOn = False
+glbGameType = 0
 
+# Game Types
+# 0 = standard timer
 
-
-
-
-def runTime():
-  global timer
-  print(timer)
-  
-  if (timer > 10):
-    setColor(yellow)
-    timer = timer - 1
-    time.sleep(0.02)
-    setColor(nothing)
-    time.sleep(0.98)
-    runTime()
-  elif (timer > 0 and timer <= 10):
-    setColor(red)
-    timer = timer - 1
-    time.sleep(0.02)
-    setColor(nothing)
-    time.sleep(0.48)
-    setColor(red)
-    time.sleep(0.02)
-    setColor(nothing)
-    time.sleep(0.48)
-    runTime()
-  else:
-    print("DEAD!")
-    setColor(red)
 
 
 for y in range(8):
@@ -64,10 +41,95 @@ time.sleep(1)
 
 for y in range(8):
   for x in range(8):
-    sense.set_pixel(x,y,red)
+    sense.set_pixel(x,y,green)
     
 time.sleep(0.5)
 
 sense.clear()
 
-runTime()
+
+
+
+def startGame():
+  setColor(green)
+  sense.show_message("10 SECONDS", back_colour=green, text_colour=[0, 0, 0], scroll_speed=0.05)
+  print("10 Seconds until start")
+  time.sleep(5)
+  setColor(orange)
+  sense.show_message("5 SECONDS", back_colour=orange, text_colour=[0, 0, 0], scroll_speed=0.05)
+  print("5 Seconds until start")
+  time.sleep(2)
+  setColor(yellow)
+  sense.show_message("3", back_colour=yellow, text_colour=[0, 0, 0], scroll_speed=0.05)
+  print("3 Seconds until start")
+  time.sleep(1)
+  setColor(red)
+  sense.show_message("2", back_colour=red, text_colour=[255, 255, 255], scroll_speed=0.05)
+  print("2 Seconds until start")
+  time.sleep(1)
+  sense.show_message("1", back_colour=red, text_colour=[255, 255, 255], scroll_speed=0.05)
+  print("1 Seconds until start")
+  time.sleep(1)
+  
+
+
+
+
+
+while True:
+  
+  if (boolGameOn == False):
+    # Main Menu Start
+    
+    for event in sense.stick.get_events():
+      if (event.action == "pressed"):
+        
+        if (event.direction == "right"):
+          boolGameOn = True
+          glbGameType = 0 #
+          print("Starting game of: Standard Timer")
+          startGame()
+          print("Game started!")
+    
+    # Main Menu End
+  else:
+    if (glbGameType == 0):
+      # Standard timer game
+      
+      if (timer > (timer / 10)):
+        setColor(yellow)
+        timer = timer - 1
+        time.sleep(0.02)
+        setColor(nothing)
+        time.sleep(0.98)
+      elif (timer > 0 and timer <= (timer / 10)):
+        setColor(red)
+        timer = timer - 1
+        time.sleep(0.02)
+        setColor(nothing)
+        time.sleep(0.48)
+        setColor(red)
+        time.sleep(0.02)
+        setColor(nothing)
+        time.sleep(0.48)
+      else:
+        print("DEAD!")
+        setColor(red)
+        
+        for event in sense.stick.get_events():
+          if (event.action == "pressed"):
+            boolGameOn = False
+      
+      # -------------------
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

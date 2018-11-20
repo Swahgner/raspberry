@@ -130,47 +130,31 @@ while True:
         setColor(red)
         gameIsOver = True
         boolGameOn = False
-      elif (timerSec == 0 and timerMin > 0):
-        timerSec = 60
-        timerMin = timerMin - 1
-        print(str(timerMin), " left!")
-        
-      if (timerMin == 0):
-        if (timerSec > 10):
-          setColor(yellow)
-          timerSec = timerSec - 1
-          time.sleep(0.02)
-          setColor(nothing)
-          time.sleep(0.98)
-      
-      
-      if (timerSec > 0 or timerMin > 0):
-        setColor(yellow)
-        timerSec = timerSec - 1
-        time.sleep(0.02)
-        setColor(nothing)
-        time.sleep(0.98)
-        print(str(timerSec), " seconds and ", str(timerMin), " min")
-      elif (timerSec > 0 and timerMin == 0):
-        setColor(red)
-        timerSec = timerSec - 1
-        time.sleep(0.02)
-        setColor(nothing)
-        time.sleep(0.48)
-        setColor(red)
-        time.sleep(0.02)
-        setColor(nothing)
-        time.sleep(0.48)
-        print(str(timerSec), " seconds and ", str(timerMin), " min")
       else:
-        if (timerMin == 0 and timerSec == 0):
-          print("DEAD!")
-          setColor(red)
-          gameIsOver = True
-          boolGameOn = False
-        else:
-          timerMin = timerMin - 1
+        if (timerSec == 0 and timerMin > 0):
           timerSec = 60
+          timerMin = timerMin - 1
+          
+        if (timerMin == 0):
+          if (timerSec > 10):
+            setColor(yellow)
+            timerSec = timerSec - 1
+            time.sleep(0.02)
+            setColor(nothing)
+            time.sleep(0.98)
+          else:
+            setColor(red)
+            timerSec = timerSec - 1
+            time.sleep(0.02)
+            setColor(nothing)
+            time.sleep(0.48)
+            setColor(red)
+            time.sleep(0.02)
+            setColor(nothing)
+            time.sleep(0.48)
+        
+          print(str(timerMin), " minute(s) and ", str(timerSec), " second(s) left!")
+      
       
       # -------------------
       

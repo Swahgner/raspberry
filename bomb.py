@@ -26,6 +26,7 @@ def setColor(color):
 timer = 45
 boolGameOn = False
 glbGameType = 0
+gameIsOver = False
 
 # Game Types
 # 0 = standard timer
@@ -81,6 +82,12 @@ while True:
   if (boolGameOn == False):
     # Main Menu Start
     
+    if (gameIsOver == True):
+      for event in sense.stick.get_events():
+        if (event.action == "pressed"):
+          boolGameOn = False
+          setColor(nothing)
+    
     for event in sense.stick.get_events():
       if (event.action == "pressed"):
         
@@ -115,10 +122,7 @@ while True:
       else:
         print("DEAD!")
         setColor(red)
-        
-        for event in sense.stick.get_events():
-          if (event.action == "pressed"):
-            boolGameOn = False
+        gameIsOver = True
       
       # -------------------
       

@@ -87,6 +87,7 @@ while True:
         if (event.action == "pressed"):
           boolGameOn = False
           setColor(nothing)
+          break
     
     for event in sense.stick.get_events():
       if (event.action == "pressed"):
@@ -95,6 +96,7 @@ while True:
           boolGameOn = True
           glbGameType = 0 #
           print("Starting game of: Standard Timer")
+          print("Timer: ", timer)
           startGame()
           print("Game started!")
     

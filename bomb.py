@@ -131,28 +131,26 @@ while True:
         boolGameOn = False
       else:
         if (timerSec == 0 and timerMin > 0):
-          timerSec = 60
+          timerSec = 59
           timerMin = timerMin - 1
+        elif (timerMin == 0):
+          setColor(red)
+          timerSec = timerSec - 1
+          time.sleep(0.02)
+          setColor(nothing)
+          time.sleep(0.48)
+          setColor(red)
+          time.sleep(0.02)
+          setColor(nothing)
+          time.sleep(0.48)
+        else:
+          setColor(yellow)
+          timerSec = timerSec - 1
+          time.sleep(0.02)
+          setColor(nothing)
+          time.sleep(0.98)
           
-        if (timerMin == 0):
-          if (timerMin > 0):
-            setColor(yellow)
-            timerSec = timerSec - 1
-            time.sleep(0.02)
-            setColor(nothing)
-            time.sleep(0.98)
-          else:
-            setColor(red)
-            timerSec = timerSec - 1
-            time.sleep(0.02)
-            setColor(nothing)
-            time.sleep(0.48)
-            setColor(red)
-            time.sleep(0.02)
-            setColor(nothing)
-            time.sleep(0.48)
-        
-          print(str(timerMin), " minute(s) and ", str(timerSec), " second(s) left!")
+        print(str(timerMin), " minute(s) and ", str(timerSec), " second(s) left!")
       
       
       # -------------------

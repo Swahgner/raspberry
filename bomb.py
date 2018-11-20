@@ -19,4 +19,8 @@ yellow = (255,255,0)
 for x in range(8):
   for y in range(8):
     sense.set_pixel(x,y,yellow)
+    time.sleep(0.005)
 
+time.sleep(1)
+
+sense.clear()

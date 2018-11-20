@@ -107,7 +107,6 @@ while True:
           
         for event in sense.stick.get_events():
           if (event.action == "pressed"):
-            
             if (event.direction == "right"):
               if (timerMin < 8):
                 timerMin = timerMin + 1
@@ -115,7 +114,7 @@ while True:
               if (timerMin > 1):
                 timerMin = timerMin - 1
             elif (event.direction == "middle"):
-              print("Starting timer game")
+              print("Starting Timer game")
               print("Timer: ", str(timerMin), " min")
               startGame()
               boolGameOn = True
@@ -136,7 +135,7 @@ while True:
           timerMin = timerMin - 1
           
         if (timerMin == 0):
-          if (timerSec > 10):
+          if (timerMin > 0):
             setColor(yellow)
             timerSec = timerSec - 1
             time.sleep(0.02)

@@ -85,9 +85,12 @@ while True:
     if (gameIsOver == True):
       for event in sense.stick.get_events():
         if (event.action == "pressed"):
-          boolGameOn = False
+          gameIsOver = False
           setColor(nothing)
     else:
+      
+      setColor(white)
+      
       for event in sense.stick.get_events():
         if (event.action == "pressed"):
           

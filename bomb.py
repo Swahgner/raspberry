@@ -114,7 +114,7 @@ while True:
             elif (event.direction == "left"):
               if (timerMin > 1):
                 timerMin = timerMin - 1
-            elif (event.direction == "up"):
+            elif (event.direction == "middle"):
               print("Starting timer game")
               print("Timer: ", str(timerMin), " min")
               startGame()
@@ -130,14 +130,10 @@ while True:
         setColor(red)
         gameIsOver = True
         boolGameOn = False
-        
-      if (timerSec > 0):
-        timerSec = timerSec - 1
-      
-      
-      if (timerSec == 0):
+      elif (timerSec == 0 and timerMin > 0):
         timerSec = 60
-        timterMin = timerMin - 1
+        timerMin = timerMin - 1
+        print(str(timerMin), " left!")
         
       if (timerMin == 0):
         if (timerSec > 10):

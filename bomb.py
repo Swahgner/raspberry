@@ -22,14 +22,16 @@ def setColor(color):
       sense.set_pixel(x,y,color)
 
 
-
-timer = 45
+timerMin = 0
+timerSec = 45
 boolGameOn = False
 glbGameType = 0
+glbCurrYRow = 0
 gameIsOver = False
 
 # Game Types
-# 0 = standard timer
+# 0 = main menu
+# 1 = standard timer
 
 
 
@@ -91,46 +93,88 @@ while True:
       
       setColor(white)
       
-      for event in sense.stick.get_events():
-        if (event.action == "pressed"):
+      if (glbGameType == 0):
+        for event in sense.stick.get_events():
+          if (event.action == "pressed"):
+            
+            if (event.direction == "right"):
+              glbGameType = 1 #
+              timerMin = 2
+              timerSec = 0
+      elif (glbGameType == 1):
+        for x in range(timerMin):
+          sense.set_pixel(x,0,blue)
           
-          if (event.direction == "right"):
-            boolGameOn = True
-            glbGameType = 0 #
-            timer = 45
-            print("Starting game of: Standard Timer")
-            print("Timer: ", timer)
-            startGame()
-            print("Game started!")
+        for event in sense.stick.get_events():
+          if (event.action == "pressed"):
+            
+            if (event.direction == "right"):
+              if (timerMin < 8):
+                timerMin = timerMin + 1
+            elif (event.direction == "left"):
+              if (timerMin > 1):
+                timerMin = timerMin - 1
+            elif (event.direction == "up"):
+              print("Starting timer game")
+              print("Timer: ", str(timerMin), " min")
+              startGame()
+              boolGameOn = True
     
     # Main Menu End
   else:
-    if (glbGameType == 0):
+    if (glbGameType == 1):
       # Standard timer game
       
-      if (timer > 10):
-        setColor(yellow)
-        timer = timer - 1
-        time.sleep(0.02)
-        setColor(nothing)
-        time.sleep(0.98)
-        print(timer, " seconds")
-      elif (timer > 0):
-        setColor(red)
-        timer = timer - 1
-        time.sleep(0.02)
-        setColor(nothing)
-        time.sleep(0.48)
-        setColor(red)
-        time.sleep(0.02)
-        setColor(nothing)
-        time.sleep(0.48)
-        print(timer, " seconds")
-      else:
+      if (timerMin == 0 and timerSec == 0):
         print("DEAD!")
         setColor(red)
         gameIsOver = True
         boolGameOn = False
+        
+      if (timerSec > 0):
+        timerSec = timerSec - 1
+      
+      
+      if (timerSec == 0):
+        timerSec = 60
+        timterMin = timerMin - 1
+        
+      if (timerMin == 0):
+        if (timerSec > 10):
+          setColor(yellow)
+          timerSec = timerSec - 1
+          time.sleep(0.02)
+          setColor(nothing)
+          time.sleep(0.98)
+      
+      
+      if (timerSec > 0 or timerMin > 0):
+        setColor(yellow)
+        timerSec = timerSec - 1
+        time.sleep(0.02)
+        setColor(nothing)
+        time.sleep(0.98)
+        print(str(timerSec), " seconds and ", str(timerMin), " min")
+      elif (timerSec > 0 and timerMin == 0):
+        setColor(red)
+        timerSec = timerSec - 1
+        time.sleep(0.02)
+        setColor(nothing)
+        time.sleep(0.48)
+        setColor(red)
+        time.sleep(0.02)
+        setColor(nothing)
+        time.sleep(0.48)
+        print(str(timerSec), " seconds and ", str(timerMin), " min")
+      else:
+        if (timerMin == 0 and timerSec == 0):
+          print("DEAD!")
+          setColor(red)
+          gameIsOver = True
+          boolGameOn = False
+        else:
+          timerMin = timerMin - 1
+          timerSec = 60
       
       # -------------------
       

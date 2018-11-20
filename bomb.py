@@ -111,6 +111,7 @@ while True:
         time.sleep(0.02)
         setColor(nothing)
         time.sleep(0.98)
+        print(timer, " seconds")
       elif (timer > 0 and timer <= (timer / 10)):
         setColor(red)
         timer = timer - 1
@@ -121,6 +122,7 @@ while True:
         time.sleep(0.02)
         setColor(nothing)
         time.sleep(0.48)
+        print(timer, " seconds")
       else:
         print("DEAD!")
         setColor(red)

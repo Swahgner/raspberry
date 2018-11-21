@@ -124,7 +124,7 @@ while True:
           minList[act] = 1
         
         for x in range(minList.count):
-          if (x = 1):
+          if (x == 1):
             sense.set_pixel(x,0,nothing)
           else:
             sense.set_pixel(x,0,blue)

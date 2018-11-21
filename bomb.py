@@ -117,8 +117,17 @@ while True:
               timerMin = 2
               timerSec = 0
       elif (glbGameType == 1):
-        for x in range(timerMin):
-          sense.set_pixel(x,0,blue)
+        
+        minList = [0,0,0,0,0,0,0,0]
+        
+        for act in range(timerMin):
+          minList[act] = 1
+        
+        for x in range(minList.count):
+          if (x = 1):
+            sense.set_pixel(x,0,nothing)
+          else:
+            sense.set_pixel(x,0,blue)
           
         for event in sense.stick.get_events():
           if (event.action == "pressed"):

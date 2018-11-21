@@ -24,12 +24,10 @@ pygame.init()
 pygame.mixer.init()
 
 #load the sound file
-mysound = pygame.mixer.Sound("beep-02.wav")
+beep = pygame.mixer.Sound("beep-02.wav")
 
 #play the sound file for 10 seconds and then stop it
-mysound.play()
-time.sleep(10)
-mysound.stop()
+beep.play()
 
 # Sound --
 
@@ -150,19 +148,23 @@ while True:
         if (timerSec == 0 and timerMin > 0):
           timerSec = 59
           timerMin = timerMin - 1
+          beep.play()
         elif (timerMin == 0):
           setColor(red)
           timerSec = timerSec - 1
+          beep.play()
           time.sleep(0.02)
           setColor(nothing)
           time.sleep(0.48)
           setColor(red)
+          beep.play()
           time.sleep(0.02)
           setColor(nothing)
           time.sleep(0.48)
         else:
           setColor(yellow)
           timerSec = timerSec - 1
+          beep.play()
           time.sleep(0.02)
           setColor(nothing)
           time.sleep(0.98)

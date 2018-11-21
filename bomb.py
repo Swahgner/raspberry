@@ -155,11 +155,13 @@ while True:
           time.sleep(0.02)
           setColor(nothing)
           time.sleep(0.48)
+          beep.stop()
           beep.play()
           setColor(red)
           time.sleep(0.02)
           setColor(nothing)
           time.sleep(0.48)
+          beep.stop()
         else:
           beep.play()
           setColor(yellow)
@@ -167,6 +169,7 @@ while True:
           time.sleep(0.02)
           setColor(nothing)
           time.sleep(0.98)
+          beep.stop()
           
         print(str(timerMin), " minute(s) and ", str(timerSec), " second(s) left!")
       

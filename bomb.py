@@ -25,6 +25,7 @@ pygame.mixer.init()
 
 #load the sound file
 beep = pygame.mixer.Sound("beep-02.wav")
+bombSound = pygame.mixer.Sound("Explosion_Ultra_Bass-Mark_DiAngelo-1810420658.wav")
 
 #play the sound file for 10 seconds and then stop it
 beep.play()
@@ -140,6 +141,7 @@ while True:
       # Standard timer game
       
       if (timerMin == 0 and timerSec == 0):
+        bombSound.play()
         print("DEAD!")
         setColor(red)
         gameIsOver = True

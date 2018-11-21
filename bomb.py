@@ -148,23 +148,22 @@ while True:
         if (timerSec == 0 and timerMin > 0):
           timerSec = 59
           timerMin = timerMin - 1
-          beep.play()
         elif (timerMin == 0):
+          beep.play()
           setColor(red)
           timerSec = timerSec - 1
-          beep.play()
           time.sleep(0.02)
           setColor(nothing)
           time.sleep(0.48)
-          setColor(red)
           beep.play()
+          setColor(red)
           time.sleep(0.02)
           setColor(nothing)
           time.sleep(0.48)
         else:
+          beep.play()
           setColor(yellow)
           timerSec = timerSec - 1
-          beep.play()
           time.sleep(0.02)
           setColor(nothing)
           time.sleep(0.98)

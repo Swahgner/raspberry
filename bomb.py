@@ -35,7 +35,8 @@ beep.play()
 def setColor(color):
   for x in range(8):
     for y in range(8):
-      sense.set_pixel(x,y,color)
+      if (sense.get_pixel(x,y) != color):
+        sense.set_pixel(x,y,color)
 
 
 timerMin = 0

@@ -123,7 +123,7 @@ while True:
         for act in range(timerMin):
           minList[act] = 1
         
-        for x in range(minList.count):
+        for x in minList:
           if (x == 1):
             sense.set_pixel(x,0,nothing)
           else:

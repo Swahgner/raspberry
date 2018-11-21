@@ -125,9 +125,9 @@ while True:
         
         for x in range(8):
           if (minList[x] == 1):
-            sense.set_pixel(x,0,nothing)
-          else:
             sense.set_pixel(x,0,blue)
+          else:
+            sense.set_pixel(x,0,nothing)
           
         for event in sense.stick.get_events():
           if (event.action == "pressed"):

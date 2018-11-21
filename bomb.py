@@ -17,10 +17,8 @@ orange = (255,140,0)
 
 # Sound ++
 
-import pygame
-pygame.mixer.init()
-beep = pygame.mixer.Sound("beep-02.wav")
-beep.play()
+import os
+os.startfile("beep-02.wav")
 
 # Sound --
 

@@ -93,7 +93,7 @@ def startGame():
   
 
 
-
+setColor(white)
 
 
 while True:
